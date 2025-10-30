@@ -1,0 +1,219 @@
+#ifndef RA2OB_SRC_CONSTANTS_HPP_
+#define RA2OB_SRC_CONSTANTS_HPP_
+
+#include <map>
+#include <string>
+
+namespace Ra2ob {
+
+// Basic game information
+
+constexpr int MAXPLAYER    = 8;
+constexpr int GAMESPEED    = 60;
+constexpr int INVALIDCLASS = 0xffffffffu;
+
+// Memory size
+
+constexpr int BOOLSIZE        = 0x1;
+constexpr int NUMSIZE         = 0x4;
+constexpr int PTRSIZE         = 0x4;
+constexpr int COLORSIZE       = 0x6;
+constexpr int STRNAMESIZE     = 0x20;
+constexpr int STRCOUNTRYSIZE  = 0x19;
+constexpr int STRUNITNAMESIZE = 0x20;
+
+// Basic offsets
+
+constexpr int GAMEPAUSEOFFSET          = 0xa8ed8c;
+constexpr int GAMEFRAMEOFFSET          = 0xa8ed84;
+constexpr int GAMETIMEOFFSET           = 0xabcd4c;
+constexpr int FIXEDOFFSET              = 0xa8b230;
+constexpr int CLASSBASEARRAYOFFSET     = 0xa8022c;
+constexpr int SUPERTIMEROFFSET         = 0xa83d50;
+constexpr int PLAYERBASEARRAYPTROFFSET = 0x1180;
+
+constexpr int HOUSETYPEOFFSET        = 0x34;
+constexpr int COLOROFFSET            = 0x56F9;
+constexpr int INFANTRYSELFHEALOFFSET = 0x164;
+constexpr int UNITSELFHEALOFFSET     = 0x168;
+constexpr int TEAMNUMBEROFFSET       = 0x1d8;
+constexpr int CURRENTPLAYEROFFSET    = 0x1ec;
+constexpr int ISDEFEATEDOFFSET       = 0x1f5;
+constexpr int ISGAMEOVEROFFSET       = 0x1f6;
+constexpr int ISWINNEROFFSET         = 0x1f7;
+
+constexpr int KILLEDUNITSOFHOUSES          = 0x53e4;
+constexpr int KILLEDBUILDINGSOFHOUSES      = 0x5438;
+constexpr int TOTALKILLEDUNITS             = 0x5488;
+constexpr int TOTALKILLEDBUILDINGS         = 0x5434;
+constexpr int FACTORYTYPESOFFSET           = 0x10;
+constexpr int FACTORYPRODUCEDBUILDINGTYPES = 0x55a0;
+constexpr int FACTORYPRODUCEDUNITTYPES     = 0x55b4;
+constexpr int FACTORYPRODUCEDINFANTRYTYPES = 0x55c8;
+constexpr int FACTORYPRODUCEDAIRCRAFTTYPES = 0x55dc;
+constexpr int ALLIVEBUILDINGTYPES          = 0x5550;
+constexpr int ALLIVEUNITTYPES              = 0x5564;
+constexpr int ALLIVEINFANTRYTYPES          = 0x5578;
+constexpr int ALLIVEAIRCRAFTTYPES          = 0x558c;
+
+constexpr int BUILDINGOFFSET = 0x5554;
+constexpr int TANKOFFSET     = 0x5568;
+constexpr int INFANTRYOFFSET = 0x557c;
+constexpr int AIRCRAFTOFFSET = 0x5590;
+
+constexpr int STRNAMEOFFSET    = 0x1602a;
+constexpr int STRCOUNTRYOFFSET = 0x24;
+
+constexpr int WINOFFSET  = 0x1f7;
+constexpr int LOSEOFFSET = 0x1f8;
+
+// 间谍渗透状态偏移（相对于HouseClass基址）
+// 根据实际内存扫描结果更新偏移量
+constexpr int SIDE2_TECH_INFILTRATED_OFFSET = 0x2BE;  
+constexpr int SIDE1_TECH_INFILTRATED_OFFSET = 0x2bd;  
+constexpr int SIDE0_TECH_INFILTRATED_OFFSET = 0x2BC;  
+constexpr int BARRACKS_INFILTRATED_OFFSET = 0x2BF;  
+constexpr int WARFACTORY_INFILTRATED_OFFSET = 0x2C0;  
+
+
+
+constexpr int UNITSAFE = 4096;
+
+// Super Timer Offsets
+
+constexpr int SUPERTIMERNUMSOFFSET = 0x10;
+
+constexpr int SUPERTIMEVECTOROFFSET = 0x4;
+
+constexpr int SUPERTIMESTARTOFFSET = 0x30;
+constexpr int SUPERTIMEOWNEROFFSET = 0x2c;
+constexpr int SUPERTIMETYPEOFFSET  = 0x28;
+constexpr int SUPERTIMELEFTOFFSET  = 0x38;
+constexpr int SUPERONHOLDOFFSET    = 0x70;
+
+constexpr int SUPERTIMENAMEOFFSET     = 0x64;
+constexpr int SUPERTIMEDURATIONOFFSET = 0xb0;
+
+// Production Offsets
+
+constexpr int P_AIRCRAFTOFFSET       = 0x53AC;
+constexpr int P_BUILDINGFIRSTOFFSET  = 0x53BC;
+constexpr int P_BUILDINGSECONDOFFSET = 0x53CC;
+constexpr int P_INFANTRYOFFSET       = 0x53B0;
+constexpr int P_TANKOFFSET           = 0x53B4;
+constexpr int P_SHIPOFFSET           = 0x53B8;
+
+constexpr int P_TIMEOFFSET        = 0x24;
+constexpr int P_STATUSOFFSET      = 0x70;
+constexpr int P_CURRENTOFFSET     = 0x58;
+constexpr int P_QUEUEPTROFFSET    = 0x44;
+constexpr int P_QUEUELENGTHOFFSET = 0x50;
+
+constexpr int P_INFANTRYTYPEOFFSET = 0x6C0;
+constexpr int P_BUILDINGTYPEOFFSET = 0x520;
+constexpr int P_UNITTYPEOFFSET     = 0x6C4;
+
+constexpr int P_ARRAYINDEXOFFSET = 0xDF8;
+
+// Time Ints
+
+constexpr int T_DETECTTIME = 1000;
+constexpr int T_FETCHTIME  = 500;
+constexpr int T_PRINTTIME  = 500;
+
+// Color Codes
+
+constexpr int C_YELLOW   = 0xE0D838;
+constexpr int C_YELLOW2  = 0xF0F840;
+constexpr int C_PURPLE   = 0x9848B8;
+constexpr int C_GREEN    = 0x58CC50;
+constexpr int C_RED      = 0xF84C48;
+constexpr int C_ORANGE   = 0xF8B048;
+constexpr int C_PINK     = 0xF8ACE8;
+constexpr int C_SKYBLUE  = 0x58D4E0;
+constexpr int C_SKYBLUE2 = 0x58D0E0;
+constexpr int C_BLUE     = 0x487CC8;
+
+// Console Color Codes
+
+constexpr char STYLE_OFF[]       = "\033[0m";
+constexpr char STYLE_BLACK[]     = "\033[30m";
+constexpr char STYLE_DARKBLUE[]  = "\033[34m";
+constexpr char STYLE_DARKGREEN[] = "\033[32m";
+constexpr char STYLE_LIGHTBLUE[] = "\033[36m";
+constexpr char STYLE_DARKRED[]   = "\033[31m";
+constexpr char STYLE_PURPLE[]    = "\033[35m";
+constexpr char STYLE_ORANGE[]    = "\033[33m";
+constexpr char STYLE_LIGHTGRAY[] = "\033[37m";
+constexpr char STYLE_GRAY[]      = "\033[90m";
+constexpr char STYLE_BLUE[]      = "\033[94m";
+constexpr char STYLE_GREEN[]     = "\033[92m";
+constexpr char STYLE_CYAN[]      = "\033[96m";
+constexpr char STYLE_RED[]       = "\033[91m";
+constexpr char STYLE_PINK[]      = "\033[95m";
+constexpr char STYLE_YELLOW[]    = "\033[93m";
+constexpr char STYLE_WHITE[]     = "\033[97m";
+
+constexpr char STYLE_BG_BLACK[]     = "\033[40m";
+constexpr char STYLE_BG_DARKBLUE[]  = "\033[44m";
+constexpr char STYLE_BG_DARKGREEN[] = "\033[42m";
+constexpr char STYLE_BG_LIGHTBLUE[] = "\033[46m";
+constexpr char STYLE_BG_DARKRED[]   = "\033[41m";
+constexpr char STYLE_BG_PURPLE[]    = "\033[45m";
+constexpr char STYLE_BG_ORANGE[]    = "\033[43m";
+constexpr char STYLE_BG_LIGHTGRAY[] = "\033[47m";
+constexpr char STYLE_BG_GRAY[]      = "\033[100m";
+constexpr char STYLE_BG_BLUE[]      = "\033[104m";
+constexpr char STYLE_BG_GREEN[]     = "\033[102m";
+constexpr char STYLE_BG_CYAN[]      = "\033[106m";
+constexpr char STYLE_BG_RED[]       = "\033[101m";
+constexpr char STYLE_BG_PINK[]      = "\033[105m";
+constexpr char STYLE_BG_YELLOW[]    = "\033[103m";
+constexpr char STYLE_BG_WHITE[]     = "\033[107m";
+
+const std::map<int, std::string> COLORMAP = {
+    {C_YELLOW, STYLE_BG_YELLOW},     {C_YELLOW2, STYLE_BG_YELLOW},
+    {C_PURPLE, STYLE_BG_PURPLE},     {C_GREEN, STYLE_BG_GREEN},
+    {C_RED, STYLE_BG_RED},           {C_ORANGE, STYLE_BG_ORANGE},
+    {C_PINK, STYLE_BG_PINK},         {C_SKYBLUE2, STYLE_BG_LIGHTBLUE},
+    {C_SKYBLUE, STYLE_BG_LIGHTBLUE}, {C_BLUE, STYLE_BG_DARKBLUE},
+};
+
+// Country Map
+
+const std::map<std::string, std::string> COUNTRYMAP = {
+    {"Americans", "Americans"}, {"Alliance", "Korea"},    {"French", "France"},
+    {"Germans", "Germans"},     {"British", "British"},   {"Africans", "Libya"},
+    {"Arabs", "Iraq"},          {"Russians", "Russians"}, {"Confederation", "Cuba"},
+    {"YuriCountry", "Yuri"},
+};
+
+// Enums
+
+enum class UnitType : int { Building = 4, Tank = 3, Infantry = 2, Aircraft = 1, Unknown = 0 };
+enum class Version : int { Yr = 1, Ra2 = 0 };
+enum class DisplayMode : int {
+    Fullscreen          = 4,
+    Windowed            = 3,
+    BorderlessWindowed  = 2,
+    StretchedFullscreen = 1,
+    Unknown             = 0,
+};
+
+// Files
+
+constexpr char F_PANELOFFSETS[] = "./config/panel_offsets.json";
+constexpr char F_UNITOFFSETS[]  = "./config/unit_offsets.json";
+
+// Strings
+
+constexpr char STR_RULER[] = "=====";
+constexpr int RULER_MULT   = 20;
+
+// Limitation
+
+constexpr bool GOODINTENTION = false;
+
+}  // end of namespace Ra2ob
+
+#endif  // RA2OB_SRC_CONSTANTS_HPP_
